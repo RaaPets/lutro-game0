@@ -1,4 +1,4 @@
-require('ecs.constants')
+require('constants')
 
 local System = {
 	ComponentType = 'input',
