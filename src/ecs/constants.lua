@@ -1,3 +1,5 @@
+pad_velo = 20.
+
 JOYPAD_START = 4
 JOYPAD_UP    = 5
 JOYPAD_DOWN  = 6
