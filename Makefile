@@ -1,21 +1,26 @@
+
 help:
-	@cat Makefile
+	@less Makefile
 
+edit:
+	@nvim src/main.lua
 run:
-	@cd src; lua main.lua
+	@./launch.sh
+runf:
+	@./launch.sh -f
 
-# # # # # # # #
+force.push:
+	@git push -f
+
 pull:
 	@git pull
 
-savetogit: git.pushall
-git.pushall: git.commitall
+savetogit: commitall
+	@echo '--> PUSH to GitHub..'
 	@git push
-git.commitall: git.addall
+commitall: addall
+	@echo '--> COMMIT if STATUS allows..'
 	@if [ -n "$(shell git status -s)" ] ; then git commit -m 'saving'; else echo '--- nothing to commit'; fi
-git.addall:
+addall:
+	@echo '--> ADD-ALL..'
 	@git add .
-
-# # # # # # # #
-clean:
-	@cargo clean
